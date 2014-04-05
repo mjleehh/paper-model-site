@@ -32,7 +32,7 @@
         t.before.on('click', function() {
             if (!((t.index - 1) >= 0)) return;
             var previousSection = sections[t.index - 1];
-            previousSection.slideFromLeft();
+            previousSection.slideIn();
             t.slideToRight();
             currentIndex = t.index - 1;
             align();
@@ -41,7 +41,7 @@
             if (!((t.index + 1) < sections.length)) return;
             t.next.addClass('hover');
             var nextSection = sections[t.index + 1];
-            nextSection.slideFromRight();
+            nextSection.slideIn();
             t.slideToLeft();
             currentIndex = t.index + 1;
             align();
@@ -62,37 +62,22 @@
         });
     };
 
-    $.extend(Section.prototype, function() {
-        var init = function(t, left) {
-            t.before.removeClass('slidein');
-            t.next.removeClass('slidein');
-            t.before.hide(1).delay(1500).fadeIn(600, function() {
-                t.before.addClass('slidein');
+    Section.prototype.slideIn = function() {
+        var t = this;
+        t.before.removeClass('slidein');
+        t.next.removeClass('slidein');
+        t.before.hide(1).delay(1500).fadeIn(600, function() {
+            t.before.addClass('slidein');
+        });
+        t.next.hide(1).delay(1500).fadeIn(600, function() {
+            t.next.addClass('slidein');
+        });
+        t.html.show()
+            .css({
+                left: 0
             });
-            t.next.hide(1).delay(1500).fadeIn(600, function() {
-                t.next.addClass('slidein');
-            });
-            t.html.show();
-            t.html
-                .css({
-                    left: left,
-                    top: 0
-                })
-                .css({
-                    left: 0
-                });
-        }
-        return {
-            slideFromRight: function() {
-                var t = this;
-                init(t, $(window).width())
-            },
-            slideFromLeft: function() {
-                var t = this;
-                init(t, -$(window).width())
-            }
-        };
-    }());
+    }
+
     Section.prototype.alignSection = function() {
         var t = this,
             newValue = ((t.index - currentIndex) * 100) + '%';
