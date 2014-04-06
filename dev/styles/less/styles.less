@@ -10,7 +10,8 @@
 @font-text: 'Swanky and Moo Moo', cursive;
 
 @animation-main-slide: left 1500ms ease;
-@animation-control-buttons: background-color 300ms linear, background-position 500ms ease;
+@animation-control-arrows: background-position 0.6s ease;
+@animation-control-position: left 0.6s ease-out, right 0.6s ease-out;
 @animation-button-colorchange: background-color 300ms linear;
 
 @animation-arrow-toleft: animateArrowToLeft 0.4s linear;
@@ -165,8 +166,19 @@ p {
   background-size: 3.5em;
   background-repeat: no-repeat;
   cursor: pointer;
-  -webkit-transition: background-position 0.6s ease;
-  transition: background-position 0.6s ease;
+  -webkit-transition: @animation-control-arrows;
+  -moz-transition: @animation-control-arrows;
+  -ms-transition: @animation-control-arrows;
+  -o-transition: @animation-control-arrows;
+  transition: @animation-control-arrows;
+}
+
+.control.animate {
+  -webkit-transition: @animation-control-position;
+  -moz-transition: @animation-control-position;
+  -ms-transition: @animation-control-position;
+  -o-transition: @animation-control-position;
+  transition: @animation-control-position;
 }
 
 .control.next {

@@ -64,19 +64,34 @@
 
     Section.prototype.slideIn = function() {
         var t = this;
-        t.before.removeClass('slidein');
-        t.next.removeClass('slidein');
-        t.before.hide(1).delay(1500).fadeIn(600, function() {
-            t.before.addClass('slidein');
-        });
-        t.next.hide(1).delay(1500).fadeIn(600, function() {
-            t.next.addClass('slidein');
-        });
+        t.slideLeftControl();
+        t.slideRightControl();
         t.html.show()
             .css({
                 left: 0
             });
     }
+
+    $.extend(Section.prototype, function() {
+        var init = function(control, offsetposition, initialposition) {
+            control.removeClass('slidein').css(offsetposition).hide();
+            control.addClass('animate').hide(1).delay(1500).show(1, function() {
+                control.css(initialposition);
+            }).delay(600).show(1, function() {
+                control.addClass('slidein').removeClass('animate');
+            });
+        };
+        return {
+          slideLeftControl: function() {
+              var t = this;
+              init(t.before, {left: -t.before.width()}, {left: 0});
+          },
+          slideRightControl: function() {
+              var t = this;
+              init(t.next, {right: -t.next.width()}, {right: 0});
+          }
+        }
+    }());
 
     Section.prototype.alignSection = function() {
         var t = this,
