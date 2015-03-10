@@ -8,7 +8,6 @@ var Section = function(html){
     this.index = html.index();
     this.next = html.find('.next');
     this.before = html.find('.before');
-    console.log(html.index());
     this.html = html;
     this.init();
 };
