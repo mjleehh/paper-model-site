@@ -1,0 +1,40 @@
+{
+  "fileExtensions": [".js"],
+
+  // literals
+  "disallowSpacesInsideObjectBrackets": true,
+  "disallowSpacesInsideArrayBrackets": true,
+
+  // blocks
+  "disallowSpacesInFunctionExpression": {
+    "beforeOpeningRoundBrace": true,
+    "beforeOpeningCurlyBrace": true
+  },
+  "disallowPaddingNewlinesInBlocks": true,
+  "requireBlocksOnNewline": true,
+  "requireCurlyBraces": true,
+  "disallowPaddingNewlinesInBlocks": true,
+
+  // identifiers
+  "disallowMultipleVarDecl": true,
+  "requireCamelCaseOrUpperCaseIdentifiers": true,
+  "requireCapitalizedConstructors": true,
+
+  // spaces & operators
+  "disallowSpaceAfterPrefixUnaryOperators": true,
+  "requireSpaceAfterBinaryOperators": true,
+  "requireSpaceBeforeBinaryOperators": true,
+
+  // line formatting
+  "maximumLineLength": 120,
+  "validateLineBreaks": "LF",
+  "validateIndentation": 4,
+
+  "validateQuoteMarks": "'",
+
+  "requireParenthesesAroundIIFE": true,
+  "disallowKeywords": ["with"],
+  "disallowImplicitTypeConversion": ["string"],
+
+  "safeContextKeyword": "_this"
+}
