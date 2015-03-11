@@ -8,12 +8,13 @@ var minifyCss = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
 var webpack = require('webpack');
 var runSequence = require('gulp-sequence');
+var deploy = require('gulp-gh-pages');
 
 
 var indexFile = path.join('app', 'index.html');
 var distDir = 'dist';
 var srcFiles = path.join('app', 'js', '**', '*.js');
-
+var deployFiles = path.join('dist', '**', '*');
 
 gulp.task('default', function(callback){
     runSequence('test', 'dist', callback);
@@ -88,4 +89,9 @@ gulp.task('webpack', function(callback) {
             new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.bundle.js")
         ]
     }, createWebpackResultFn(callback));
+});
+
+gulp.task('deploy', function(){
+    gulp.src(deployFiles)
+        .pipe(deploy());
 });

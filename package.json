@@ -12,7 +12,8 @@
     "gulp-minify-css": "~1.0.0",
     "gulp-jshint": "~1.9.2",
     "gulp-jscs": "~1.4.0",
-    "jshint-stylish": "~1.0.1"
+    "jshint-stylish": "~1.0.1",
+    "gulp-gh-pages": "~0.4.0"
   },
   "dependencies": {
     "lodash": "~3.5.0",
